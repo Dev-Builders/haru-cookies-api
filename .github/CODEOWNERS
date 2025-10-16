@@ -1,0 +1,15 @@
+# Global rule - you are the owner of everything in this repository
+
+# This ensures that all PRs require your approval before merging
+
+- @Cesarryudi
+
+# You can also specify specific patterns if needed in the future:
+
+# /app/ @Cesarryudi
+
+# \*.py @Cesarryudi
+
+# /docker-compose.yml @Cesarryudi
+
+# /requirements.txt @Cesarryudi
