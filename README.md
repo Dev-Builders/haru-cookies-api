@@ -1,21 +1,21 @@
-# FastAPI App with PostgreSQL (Docker DB Only)
+This project runs the FastAPI application locally and uses a Docker container for the PostgreSQL database.
 
-Este projeto roda a aplicação FastAPI localmente e usa um container Docker para o banco de dados PostgreSQL.
+## Instructions
 
-## Instruções
+1. Start the database:
 
-1. Suba o banco de dados:
 ```bash
 docker-compose up -d
 ```
 
-2. Instale dependências e rode o app:
+2. Install dependencies and run the app:
+
 ```bash
 python -m venv venv
-source venv/bin/activate  # ou venv\Scripts\activate no Windows
+source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-3. Acesse a API:
-[http://localhost:8000/docs](http://localhost:8000/docs)
+3. Access the API:
+   [http://localhost:8000/docs](http://localhost:8000/docs)
