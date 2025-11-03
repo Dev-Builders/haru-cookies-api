@@ -1,3 +1,4 @@
+from app.api.endpoints.services.user_service import create_user_service
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.db.session import SessionLocal
@@ -22,14 +23,5 @@ def read_users(db: Session = Depends(get_db)) -> list[UserResponse]:
 
 @router.post("/", response_model=UserResponse)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    # Check if email already exists
-    db_user = db.query(User).filter(User.email == user.email).first()
-    if db_user:
-        raise HTTPException(status_code=400, detail="Email already registered")
-
-    # Create new user
-    db_user = User(name=user.name, email=user.email)
-    db.add(db_user)
-    db.commit()
-    db.refresh(db_user)
+    db_user = create_user_service(user, db)
     return db_user
