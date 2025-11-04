@@ -1,4 +1,4 @@
-from app.api.endpoints.services.user_service import create_user_service
+from app.api.services.user_service import create_user_service
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.db.session import SessionLocal
