@@ -8,7 +8,7 @@ from app.db.base import Base
 from app.db.session import DATABASE_URL as SQLALCHEMY_DATABASE_URL
 
 # Importa todos os modelos para que o Alembic possa detectá-los
-from app.models import user, product
+from app.models import user, product, client
 
 # Alembic Config
 config = context.config
