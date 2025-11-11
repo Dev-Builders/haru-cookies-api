@@ -1,7 +1,11 @@
 from logging.config import fileConfig
+import sys
+import os
 
 from sqlalchemy import engine_from_config, pool
 from alembic import context
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # Importa o Base e a URL da tua aplicação
 from app.db.base import Base
@@ -14,7 +18,10 @@ from app.models import user, product
 config = context.config
 
 # Substitui a URL do alembic.ini pela tua string de conexão
-config.set_main_option("sqlalchemy.url", SQLALCHEMY_DATABASE_URL)
+if SQLALCHEMY_DATABASE_URL:
+    config.set_main_option("sqlalchemy.url", SQLALCHEMY_DATABASE_URL)
+else:
+    raise ValueError("DATABASE_URL não está configurada!")
 
 # Logging
 if config.config_file_name is not None:
